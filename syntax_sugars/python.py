@@ -1,5 +1,10 @@
 # Syntax Sugars in Python
 
+# %% Ternary operator
+num = 0
+print("zero" if num == 0 else "one")
+num = 1
+print("zero" if num == 0 else "one")
 # %% from 0 to 9
 print([i for i in range(10)])
 # %% from 69 to 420
@@ -50,8 +55,10 @@ class SomeClass:
 # %% operator overloading
 class MyClass:
     def __getattribute__(self, name):
+        # fstring
         return f"You tried to access {name}"
     def __setattr__(self, name, value):
+        # fstring
         print(f"You tried to set {name} to {value}")
 myObj = MyClass()
 myObj.myAttr = "some value"
