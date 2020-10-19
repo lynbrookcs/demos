@@ -15,6 +15,10 @@ print(my_list[::-1])
 # %% advanced list comprehension
 my_list = [i for i in range(10) if i % 3 == 0]
 print(my_list)
+# %% other types of comprehension
+test_set = {i for i in range(10)} # will make a set of range(10)
+test_dict = {i: i + 1 for i in range(10)} # will make a dict of value: value + 1
+test_generator = (i + 1 for i in range(10)) # will make a generator instead of list of range(10)
 # %% Get items in a list from backwards indices
 print(my_list[-1])
 # %% iterate through a list
@@ -72,44 +76,30 @@ myObj = MyClass()
 myObj.myAttr = "some value"
 print(myObj.myAttr)
 # %% variadic arguments
-def add(*args):
-    count = 0
-    for arg in args:
-        count += arg
-    return count
-print(add(1, 2, 3, 4)) # Will be 10
+def var_args(*args):
+    print(args)
+var_args(1, 2, 3, 4)
 # %% variadic keyword arguments
-def get_options(**kwargs):
-    return {"flag": kwargs.get("flag", False), "arg": kwargs.get("arg", 0)}
-print(get_options(flag=True, arg=1)) # Will be {"flag": True, "arg": 1}
-print(get_options()) # Will be {"flag": False, "arg": 0}
+def var_kwargs(**kwargs):
+    print(kwargs)
+var_kwargs(arg1=True, arg2=1, arg3="hello")
 # %% argument unpacking
 data = [1, 2, 3, 4, 5, 6]
 print(*data)
-print(data[0], data[1], data[2], data[3], data[4], data[5]) # Equivalent of above
-def testfunc(a, b):
+print(data[0], data[1], data[2], data[3], data[4], data[5]) # equivalent of above
+
+def add(a, b):
     return a + b
-testfunc_args = {"a": 1, "b": 2}
-print(testfunc(**testfunc_args)) # Will print 3
-# %% set comprehension
-test_set = {i for i in range(10)} # Will make a set of range(10)
-# %% dictionary comprehension
-test_dict = {i: i + 1 for i in range(10)} # Will make a dict of value: value + 1
-# %% generator comprehension
-comp_gen = (i + 1 for i in range(10)) # Will make a generator instead of list of range(10)
-# %% inline iterable for function
-def sum_of_list(lyst):
-    count = 0
-    for i in lyst:
-        count += i
-    return i
-print(sum_of_list([1, 2, 3, 4]))
-print(sum_of_list(i + 1 for i in range(4)))
+my_args = {"a": 1, "b": 2}
+print(add(**my_args)) # Will print 3
+
+
+
 # %% pythonpp
-# Shameless plug: star pythonpp at https://github.com/KentoNishi/PythonPP
-# Full demo at the repo website also
-# Install by ``pip install pythonpp``
-# Adds easier encapsulation
+# shameless plug: star pythonpp at https://github.com/KentoNishi/PythonPP
+# full demo at the repo website also
+# install by ``pip install pythonpp``
+# adds easier encapsulation
 from pythonpp import *
 @PythonPP
 class MyClass:
