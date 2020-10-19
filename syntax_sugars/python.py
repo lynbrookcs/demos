@@ -15,6 +15,8 @@ print(my_list[::-1])
 # %% advanced list comprehension
 my_list = [i for i in range(10) if i % 3 == 0]
 print(my_list)
+# %% Get items in a list from backwards indices
+print(my_list[-1])
 # %% iterate through a list
 my_list = ["item 1", "item 2", "item 3"]
 for item in my_list:
@@ -49,17 +51,23 @@ print(add(9, 10))
 def wrapper(my_class):
     print(my_class)
 
+
 @wrapper
 class SomeClass:
     pass
+
+
 # %% operator overloading
 class MyClass:
     def __getattribute__(self, name):
         # fstring
         return f"You tried to access {name}"
+
     def __setattr__(self, name, value):
         # fstring
         print(f"You tried to set {name} to {value}")
+
+
 myObj = MyClass()
 myObj.myAttr = "some value"
 print(myObj.myAttr)
