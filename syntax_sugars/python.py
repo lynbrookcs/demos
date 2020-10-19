@@ -15,6 +15,10 @@ print(my_list[::-1])
 # %% advanced list comprehension
 my_list = [i for i in range(10) if i % 3 == 0]
 print(my_list)
+# %% other types of comprehension
+test_set = {i for i in range(10)} # will make a set of range(10)
+test_dict = {i: i + 1 for i in range(10)} # will make a dict of value: value + 1
+test_generator = (i + 1 for i in range(10)) # will make a generator instead of list of range(10)
 # %% Get items in a list from backwards indices
 print(my_list[-1])
 # %% iterate through a list
@@ -71,3 +75,49 @@ class MyClass:
 myObj = MyClass()
 myObj.myAttr = "some value"
 print(myObj.myAttr)
+# %% variadic arguments
+def var_args(*args):
+    print(args)
+var_args(1, 2, 3, 4)
+# %% variadic keyword arguments
+def var_kwargs(**kwargs):
+    print(kwargs)
+var_kwargs(arg1=True, arg2=1, arg3="hello")
+# %% argument unpacking
+data = [1, 2, 3, 4, 5, 6]
+print(*data)
+print(data[0], data[1], data[2], data[3], data[4], data[5]) # equivalent of above
+
+def add(a, b):
+    return a + b
+my_args = {"a": 1, "b": 2}
+print(add(**my_args)) # Will print 3
+
+
+
+# %% pythonpp
+# shameless plug: star pythonpp at https://github.com/KentoNishi/PythonPP
+# full demo at the repo website also
+# install by ``pip install pythonpp``
+# adds easier encapsulation
+from pythonpp import *
+@PythonPP
+class MyClass:
+    def namespace(public, private):
+        @constructor
+        def Constructor(value):
+            public.public_var = value + 1
+            private.private_var = value
+
+        @method(public)
+        def public_method():
+            private.private_method()
+            return private.private_var
+
+        @method(private)
+        def private_method():
+            print("EnCApSuLAtIOn")
+
+obj = MyClass(0)
+print(obj.public_var)
+print(obj.public_method())
